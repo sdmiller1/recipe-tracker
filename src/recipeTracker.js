@@ -1,12 +1,15 @@
-const http = require("http");
+const express = require("express");
 const fs = require("fs");
+const app = express();
 
-http.createServer((request, response) => {
+// Return an html file
+app.get("/", (request, response) => {
     const fileName = "index.html";
     fs.readFile(fileName, (error, data) => {
-        response.write(data.toString());
-        response.end();
-    })
-}).listen(3333);
+        response.send(data.toString());
+    });
+});
 
-console.log("Listening on port 3333");
+app.listen(3000, () => {
+    console.log("listening on port 3000");
+});
