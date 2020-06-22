@@ -1,5 +1,7 @@
 const express = require("express");
 const fs = require("fs");
+var mysql = require('mysql');
+
 const app = express();
 
 // Make resources directory publicly available
@@ -11,6 +13,17 @@ app.get("/", (request, response) => {
     fs.readFile(fileName, (error, data) => {
         response.send(data.toString());
     });
+});
+
+var con = mysql.createConnection({
+    host: "localhost",
+    user: "developer",
+    password: "password"
+});
+
+con.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
 });
 
 app.listen(3000, () => {
