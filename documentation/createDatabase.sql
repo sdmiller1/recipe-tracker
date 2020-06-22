@@ -35,3 +35,6 @@ ALTER TABLE Ingredients ADD CONSTRAINT Ingredients_Recipes FOREIGN KEY Ingredien
 
 -- End of file.
 
+
+-- Insert sample data
+insert into Recipes values (default, 'pizza', 'This is a good pizza', 'put pizza in the oven, when it is done eat it', 5, 'pizza.jpg');
