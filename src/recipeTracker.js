@@ -1,6 +1,6 @@
 const express = require("express");
 const fs = require("fs");
-var mysql = require('mysql');
+const mysql = require('mysql');
 
 const app = express();
 
@@ -15,15 +15,22 @@ app.get("/", (request, response) => {
     });
 });
 
-var con = mysql.createConnection({
+let con = mysql.createConnection({
     host: "localhost",
     user: "developer",
-    password: "password"
+    password: "password",
+    database: "recipes"
 });
+
+let sql = "select * from recipes";
 
 con.connect(function(err) {
     if (err) throw err;
-    console.log("Connected!");
+    con.query(sql, function (err, result, fields) {
+        if (err) throw err;
+        console.log(result);
+        console.log(fields);
+      });
 });
 
 app.listen(3000, () => {
