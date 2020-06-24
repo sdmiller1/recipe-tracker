@@ -1,6 +1,8 @@
 const express = require("express");
 const fs = require("fs");
-const mysql = require('mysql');
+const DatabaseManager = require("./DatabaseManager.js");
+
+const database = new DatabaseManager();
 
 const app = express();
 
@@ -15,23 +17,7 @@ app.get("/", (request, response) => {
     });
 });
 
-let con = mysql.createConnection({
-    host: "localhost",
-    user: "developer",
-    password: "password",
-    database: "recipes"
-});
-
-let sql = "select * from recipes";
-
-con.connect(function(err) {
-    if (err) throw err;
-    con.query(sql, function (err, result, fields) {
-        if (err) throw err;
-        console.log(result);
-        console.log(fields);
-      });
-});
+database.getAllRecipes();
 
 app.listen(3000, () => {
     console.log("listening on port 3000");
