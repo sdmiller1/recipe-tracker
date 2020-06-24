@@ -9,7 +9,13 @@ const app = express();
 // Make resources directory publicly available
 app.use('/resources', express.static(__dirname + '\\resources'));
 
-// Return an html file
+app.use(express.json());
+
+// -------------------
+//   HTML Requests
+// -------------------
+
+// Home Page
 app.get("/", (request, response) => {
     const fileName = "index.html";
     fs.readFile(fileName, (error, data) => {
@@ -17,7 +23,16 @@ app.get("/", (request, response) => {
     });
 });
 
-database.getAllRecipes();
+// -------------------
+//    API Requests
+// -------------------
+
+// Get All Recipes
+app.get("/api/recipes", (request, response) => {
+    database.getAllRecipes(data => {
+        response.json(data);
+    });
+});
 
 app.listen(3000, () => {
     console.log("listening on port 3000");

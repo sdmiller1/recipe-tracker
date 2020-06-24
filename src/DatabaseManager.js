@@ -13,18 +13,16 @@ class DatabaseManager {
         return connection;
     }
 
-    getAllRecipes() {
-        let con = this.getConnection();
+    getAllRecipes(callback) {
+        let connection = this.getConnection();
 
         let sql = "select * from recipes";
 
-        con.connect(function(err) {
+        connection.query(sql, (err, result, fields) => {
             if (err) throw err;
-            con.query(sql, function (err, result, fields) {
-                if (err) throw err;
-                console.log(result);
-                // console.log(fields);
-            });
+            callback(result);
+            // console.log(result);
+            // console.log(fields);
         });
     }
 }
