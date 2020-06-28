@@ -37,4 +37,6 @@ ALTER TABLE Ingredients ADD CONSTRAINT Ingredients_Recipes FOREIGN KEY Ingredien
 
 
 -- Insert sample data
-insert into Recipes values (default, 'pizza', 'This is a good pizza', 'put pizza in the oven, when it is done eat it', 5, 'pizza.jpg');
+insert into Recipes values (default, 'Pizza', 'This is a good pizza', 'put pizza in the oven, when it is done eat it', 5, 'pizza.jpg');
+insert into Recipes values (default, 'Noodles', 'These are noodles', 'Boil water then put noodles in water', 4, 'pizza.jpg');
+insert into Recipes values (default, 'Cake', 'This is the best desert', 'Mix ingredients then put in oven', 5, 'pizza.jpg');
