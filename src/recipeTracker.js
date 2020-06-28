@@ -18,7 +18,7 @@ app.use(express.json());
 
 // Home Page
 app.get("/", (request, response) => {
-    const fileName = "index.html";
+    const fileName = "html/index.html";
     fs.readFile(fileName, (error, data) => {
         response.send(data.toString());
     });
