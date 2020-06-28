@@ -25,6 +25,19 @@ class DatabaseManager {
             // console.log(fields);
         });
     }
+
+    getRecipeById(id, callback) {
+        let connection = this.getConnection();
+
+        let sql = "select * from recipes where id = ?";
+
+        connection.query(sql, [id], (err, result, fields) => {
+            if (err) throw err;
+            callback(result);
+            // console.log(result);
+            // console.log(fields);
+        });
+    }
 }
 
 module.exports = DatabaseManager;

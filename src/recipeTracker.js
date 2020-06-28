@@ -1,6 +1,7 @@
 const express = require("express");
 const fs = require("fs");
 const DatabaseManager = require("./DatabaseManager.js");
+const { response } = require("express");
 
 const database = new DatabaseManager();
 
@@ -30,6 +31,15 @@ app.get("/", (request, response) => {
 // Get All Recipes
 app.get("/api/recipes", (request, response) => {
     database.getAllRecipes(data => {
+        response.json(data);
+    });
+});
+
+// Get recipe by ID
+app.get("/api/recipes/:id", (request, response) => {
+    let id = parseInt(request.params.id);
+
+    database.getRecipeById(id, data => {
         response.json(data);
     });
 });
