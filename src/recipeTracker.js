@@ -24,6 +24,14 @@ app.get("/", (request, response) => {
     });
 });
 
+// View Recipe Page
+app.get("/view", (request, response) => {
+    const fileName = "html/view.html";
+    fs.readFile(fileName, (error, data) => {
+        response.send(data.toString());
+    });
+});
+
 // -------------------
 //    API Requests
 // -------------------

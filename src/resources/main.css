@@ -1,3 +1,15 @@
 /* 
     Custom CSS styles for Recipe Tracker
 */
+.noLinkStyle {
+    color: inherit;
+}
+
+.rating i {
+    font-size: 2em;
+    cursor: pointer;
+}
+
+#searchBox {
+    width: auto!important;
+}
