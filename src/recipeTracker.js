@@ -24,6 +24,14 @@ app.get("/", (request, response) => {
     });
 });
 
+// Search Page
+app.get("/search", (request, response) => {
+    const fileName = "html/search.html";
+    fs.readFile(fileName, (error, data) => {
+        response.send(data.toString());
+    });
+});
+
 // View Recipe Page
 app.get("/view/:id", (request, response) => {
     const fileName = "html/view.html";
