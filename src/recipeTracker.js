@@ -60,6 +60,15 @@ app.get("/api/recipes/:id", (request, response) => {
     });
 });
 
+// Get recipe by Search
+app.get("/api/recipes/search/:search", (request, response) => {
+    let search = request.params.search;
+
+    database.getRecipesBySearch(search, data => {
+        response.json(data);
+    });
+});
+
 app.listen(3000, () => {
     console.log("listening on port 3000");
 });

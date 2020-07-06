@@ -4,11 +4,15 @@ const displayRecipes = () => {
 
     let outputLocation = document.querySelector("#recipeDisplayLocation");
 
-    getAllRecipes(recipes => {
-        console.log(recipes)
+    let searchQuery = new URLSearchParams(window.location.search).get("q");
+
+    getRecipesBySearch(searchQuery, recipes => {
+        
+        if (recipes.length == 0) {
+            outputLocation.innerHTML = "<h2>No recipes found</h2>";
+        }
     
         for (recipe of recipes) {
-            console.log(recipe);
             let recipeItem = `
                     <div class="col-6 col-lg-3 my-2">
                         <div class="card h-100">

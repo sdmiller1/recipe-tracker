@@ -36,6 +36,17 @@ class DatabaseManager {
             callback(result[0]);
         });
     }
+
+    getRecipesBySearch(search, callback) {
+        let connection = this.getConnection();
+
+        let sql = "select * from recipes where name = ?";
+
+        connection.query(sql, [search], (err, result, fields) => {
+            if (err) throw err;
+            callback(result);
+        });
+    }
 }
 
 module.exports = DatabaseManager;

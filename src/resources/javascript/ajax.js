@@ -28,4 +28,18 @@ const getRecipeById = (id, callback) => {
         });
 }
 
+const getRecipesBySearch = (query, callback) => {
+    let url = apiPath + "/search/" + query;
+    let parameters = {
+        "method": "get"
+    };
+
+    fetch(url, parameters)
+        .then(result => {
+            return result.json();
+        }).then(result => {
+            callback(result);
+        });
+}
+
 // Search For Recipe
