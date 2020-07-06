@@ -33,9 +33,7 @@ class DatabaseManager {
 
         connection.query(sql, [id], (err, result, fields) => {
             if (err) throw err;
-            callback(result);
-            // console.log(result);
-            // console.log(fields);
+            callback(result[0]);
         });
     }
 }
