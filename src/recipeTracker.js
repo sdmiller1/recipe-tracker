@@ -55,8 +55,11 @@ app.get("/api/recipes", (request, response) => {
 app.get("/api/recipes/:id", (request, response) => {
     let id = parseInt(request.params.id);
 
-    database.getRecipeById(id, data => {
-        response.json(data);
+    database.getRecipeById(id, recipe => {
+        database.getIngredientsByRecipeId(id, ingredients => {
+            recipe['ingredients'] = ingredients;
+            response.json(recipe);
+        });
     });
 });
 
