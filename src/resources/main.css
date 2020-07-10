@@ -13,3 +13,7 @@
 #searchBox {
     width: auto!important;
 }
+
+.form-check-label, .form-check-input {
+    cursor: pointer;
+}
