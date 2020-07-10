@@ -10,7 +10,7 @@ drop table if exists Recipes;
 CREATE TABLE Ingredients (
     id int NOT NULL AUTO_INCREMENT,
     name varchar(255) NOT NULL,
-    quantity int NOT NULL,
+    quantity varchar(255) NOT NULL,
     recipes_id int NOT NULL,
     CONSTRAINT Ingredients_pk PRIMARY KEY (id)
 );
@@ -40,3 +40,13 @@ ALTER TABLE Ingredients ADD CONSTRAINT Ingredients_Recipes FOREIGN KEY Ingredien
 insert into Recipes values (default, 'Pizza', 'This is a good pizza', 'put pizza in the oven, when it is done eat it', 5, 'pizza.jpg');
 insert into Recipes values (default, 'Noodles', 'These are noodles', 'Boil water then put noodles in water', 4, 'pizza.jpg');
 insert into Recipes values (default, 'Cake', 'This is the best desert', 'Mix ingredients then put in oven', 5, 'pizza.jpg');
+
+insert into Ingredients values (default, 'Flour', '2 Cups', 1);
+insert into Ingredients values (default, 'Water', '2 Cups', 1);
+insert into Ingredients values (default, 'Tomato Sauce', '2 Cups', 1);
+insert into Ingredients values (default, 'Cheese', '2 Cups', 1);
+
+insert into Ingredients values (default, 'Noodles', '2 Cups', 2);
+insert into Ingredients values (default, 'Water', '2 Cups', 2);
+
+insert into Ingredients values (default, 'Flour', '2 Cups', 3);
