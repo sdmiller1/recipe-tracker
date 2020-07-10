@@ -8,6 +8,17 @@ const displayRecipe = () => {
     let recipeId = parseInt(window.location.toString().split("/")[4]);
 
     getRecipeById(recipeId, recipe => {
+        let ingredients = "";
+
+        for (ingredient of recipe["ingredients"]) {
+            ingredients += `
+                <div class="col-4 text-center mb-1">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input"> ${ingredient.quantity} ${ingredient.name}
+                    </label>
+                </div>
+            `;
+        }
 
         let recipeSection = `
             <section class="row mt-3">
@@ -33,11 +44,7 @@ const displayRecipe = () => {
                 <h3 class="col-12">
                     Ingredients:
                 </h3>
-                <div class="col-4 text-center mb-1">
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input"> 2 Cups Flour
-                    </label>
-                </div>
+                ${ingredients}
                 <h3 class="col-12">
                     Recipe:
                 </h3>
