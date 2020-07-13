@@ -38,6 +38,7 @@ const displayRecipe = () => {
                     <p class="">
                         ${recipe.description}
                     </p>
+                    <a href="/edit/${recipe.id}" class="btn btn-info" role="button">Edit Recipe</a>
                 </div>
             </section>
             <section class="row mt-3">
