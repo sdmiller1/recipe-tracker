@@ -38,12 +38,12 @@ const displayRecipe = () => {
                 <h3 class="col-12">
                     Ingredients:
                 </h3>
-                <div class="col-12 row">
+                <div class="col-12 row" id="ingredientsContainer">
                     ${ingredients}
                 </div>
 
                 <div class="col-12 mb-1">
-                    <button class="btn btn-secondary">Add Another Ingredient</button>
+                    <button class="btn btn-secondary" onclick="addIngredient()">Add Another Ingredient</button>
                 </div>
                 <h3 class="col-12">
                     Recipe:
@@ -62,6 +62,16 @@ const displayRecipe = () => {
     });
 
 
+}
+
+const addIngredient = () => {
+    let ingredientsContainer = document.querySelector("#ingredientsContainer");
+
+    ingredientsContainer.innerHTML += `
+        <div class="col-4 text-center mb-1">
+            <input type="text" class="form-control recipeIngredient">
+        </div>
+    `;
 }
 
 window.onload = displayRecipe;
