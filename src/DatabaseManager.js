@@ -60,6 +60,17 @@ class DatabaseManager {
             callback(result);
         });
     }
+
+    deleteRecipeById(id, callback) {
+        let connection = this.getConnection();
+
+        let sql = "delete from recipes where id = ?";
+
+        connection.query(sql, [id], (err, result, fields) => {
+            if (err) throw err;
+            callback(result);
+        });
+    }
 }
 
 module.exports = DatabaseManager;
