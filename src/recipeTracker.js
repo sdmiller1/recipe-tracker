@@ -1,6 +1,8 @@
 const express = require("express");
 const fs = require("fs");
+const bodyParser = require("body-parser");
 const DatabaseManager = require("./DatabaseManager.js");
+// TODO: i dont think this line is needed/ i didnt add it
 const { response } = require("express");
 
 const database = new DatabaseManager();
@@ -11,6 +13,7 @@ const app = express();
 app.use('/resources', express.static(__dirname + '\\resources'));
 
 app.use(express.json());
+app.use(bodyParser.json());
 
 // -------------------
 //   HTML Requests
@@ -83,8 +86,8 @@ app.get("/api/recipes/search/:search", (request, response) => {
 });
 
 // Delete Recipe By ID
-app.delete("/api/recipes/:id", (request, response) => {
-    let id = request.params.id;
+app.delete("/api/recipes", (request, response) => {
+    let id = request.body.id;
 
     database.deleteRecipeById(id, data => {
         response.json(data);
