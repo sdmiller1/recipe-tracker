@@ -57,8 +57,10 @@ app.get("/api/recipes/:id", (request, response) => {
 
     database.getRecipeById(id, recipe => {
         database.getIngredientsByRecipeId(id, ingredients => {
-            recipe['ingredients'] = ingredients;
-            response.json(recipe);
+            if (typeof(recipe) !== 'undefined' && typeof(ingredients) !== 'undefined') {
+                recipe['ingredients'] = ingredients;
+                response.json(recipe);
+            }
         });
     });
 });
