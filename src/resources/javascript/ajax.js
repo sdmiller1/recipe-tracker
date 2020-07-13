@@ -42,6 +42,19 @@ const getRecipesBySearch = (query, callback) => {
         });
 }
 
-const deleteRecipe = (id) => {
+const deleteRecipe = (id) => {  
+    let url = apiPath;
+    let parameters = {
+        "method": "delete"
+        , headers: { "Content-Type": "application/json" }
+        , "body": JSON.stringify({'id': id})
+    };
 
+    fetch(url, parameters)
+        .then(result => {
+            return result.json();
+        }).then(result => {
+            console.log(result);
+            // TODO: this should indicate to the user that it was deleted
+        });
 }
