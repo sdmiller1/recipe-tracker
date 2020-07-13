@@ -40,7 +40,7 @@ app.get("/view/:id", (request, response) => {
     });
 });
 
-// View Recipe Page
+// Edit Recipe Page
 app.get("/edit/:id", (request, response) => {
     const fileName = "html/edit.html";
     fs.readFile(fileName, (error, data) => {
