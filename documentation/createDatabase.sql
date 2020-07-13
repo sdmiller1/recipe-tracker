@@ -3,14 +3,13 @@ drop table if exists Ingredients;
 drop table if exists Recipes;
 
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2020-06-22 21:21:03.886
+-- Last modification date: 2020-07-13 17:56:55.786
 
 -- tables
 -- Table: Ingredients
 CREATE TABLE Ingredients (
     id int NOT NULL AUTO_INCREMENT,
-    name varchar(255) NOT NULL,
-    quantity varchar(255) NOT NULL,
+    ingredient varchar(255) NOT NULL,
     recipes_id int NOT NULL,
     CONSTRAINT Ingredients_pk PRIMARY KEY (id)
 );
@@ -41,12 +40,12 @@ insert into Recipes values (default, 'Pizza', 'This is a good pizza', 'put pizza
 insert into Recipes values (default, 'Noodles', 'These are noodles', 'Boil water then put noodles in water', 4, 'pizza.jpg');
 insert into Recipes values (default, 'Cake', 'This is the best desert', 'Mix ingredients then put in oven', 5, 'pizza.jpg');
 
-insert into Ingredients values (default, 'Flour', '2 Cups', 1);
-insert into Ingredients values (default, 'Water', '2 Cups', 1);
-insert into Ingredients values (default, 'Tomato Sauce', '2 Cups', 1);
-insert into Ingredients values (default, 'Cheese', '2 Cups', 1);
+insert into Ingredients values (default, '2 Cups Flour', 1);
+insert into Ingredients values (default, '2 Cups Water', 1);
+insert into Ingredients values (default, '2 Cups Tomato Sauce', 1);
+insert into Ingredients values (default, '2 Cups Cheese', 1);
 
-insert into Ingredients values (default, 'Noodles', '2 Cups', 2);
-insert into Ingredients values (default, 'Water', '2 Cups', 2);
+insert into Ingredients values (default, '2 Cups Noodles', 2);
+insert into Ingredients values (default, '2 Cups Water', 2);
 
-insert into Ingredients values (default, 'Flour', '2 Cups', 3);
+insert into Ingredients values (default, '2 Cups Flour', 3);
