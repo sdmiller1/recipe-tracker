@@ -14,7 +14,7 @@ const displayRecipe = () => {
             ingredients += `
                 <div class="col-4 text-center mb-1">
                     <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input"> ${ingredient.quantity} ${ingredient.name}
+                        <input type="checkbox" class="form-check-input"> ${ingredient.ingredient}
                     </label>
                 </div>
             `;

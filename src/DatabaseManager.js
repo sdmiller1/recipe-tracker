@@ -53,7 +53,7 @@ class DatabaseManager {
     getIngredientsByRecipeId(id, callback) {
         let connection = this.getConnection();
 
-        let sql = "select ingredients.name, ingredients.quantity from recipes inner join ingredients on recipes.id = ingredients.recipes_id where recipes.id = ?";
+        let sql = "select ingredients.ingredient from recipes inner join ingredients on recipes.id = ingredients.recipes_id where recipes.id = ?";
 
         connection.query(sql, [id], (err, result, fields) => {
             if (err) throw err;
