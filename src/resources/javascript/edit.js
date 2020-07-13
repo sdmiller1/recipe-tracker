@@ -53,7 +53,7 @@ const displayRecipe = () => {
                 </div>
                 <div class="col-12">
                     <button class="btn btn-primary">Save Recipe</button>
-                    <button class="btn btn-danger">Delete Recipe</button>
+                    <button class="btn btn-danger" onclick="deleteRecipe('${recipe.id}')">Delete Recipe</button>
                 </div>
             </section>
         `;

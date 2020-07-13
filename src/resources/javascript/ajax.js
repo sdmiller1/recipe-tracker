@@ -42,4 +42,6 @@ const getRecipesBySearch = (query, callback) => {
         });
 }
 
-// Search For Recipe
+const deleteRecipe = (id) => {
+
+}
