@@ -82,6 +82,15 @@ app.get("/api/recipes/search/:search", (request, response) => {
     });
 });
 
+// Delete Recipe By ID
+app.delete("/api/recipes/:id", (request, response) => {
+    let id = request.params.id;
+
+    database.deleteRecipeById(id, data => {
+        response.json(data);
+    });
+});
+
 app.listen(3000, () => {
     console.log("listening on port 3000");
 });
