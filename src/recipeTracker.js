@@ -40,6 +40,14 @@ app.get("/view/:id", (request, response) => {
     });
 });
 
+// View Recipe Page
+app.get("/edit/:id", (request, response) => {
+    const fileName = "html/edit.html";
+    fs.readFile(fileName, (error, data) => {
+        response.send(data.toString());
+    });
+});
+
 // -------------------
 //    API Requests
 // -------------------
