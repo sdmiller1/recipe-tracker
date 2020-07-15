@@ -51,6 +51,14 @@ app.get("/edit/:id", (request, response) => {
     });
 });
 
+// Add Recipe Page
+app.get("/add", (request, response) => {
+    const fileName = "html/add.html";
+    fs.readFile(fileName, (error, data) => {
+        response.send(data.toString());
+    });
+});
+
 // -------------------
 //    API Requests
 // -------------------
