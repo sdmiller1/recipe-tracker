@@ -103,24 +103,17 @@ app.delete("/api/recipes", (request, response) => {
 });
 
 // Add New Recipe
-app.get("/api/new/", (request, response) => {
-    recipe = {
-        title: "Cookies"
-        , description: "Delicious home baked chocolate chip cookies."
-        , ingredients: [
-            "Flour"
-            , "Eggs"
-            , "Vanilla"
-            , "Chocolate Chips"
-        ]
-        , instructions: "Combine ingredients in bowl. place tablespoon sized dough balls on cookie sheet and bake for 10 min."
-        , image: "pizza.jpg"
-    }
+app.post("/api/recipes/", (request, response) => {
+    // TODO: Verify that datashape is correct before insert
+    let recipe = request.body;
 
     database.addNewRecipe(recipe, data => {
         // response.json(data);
-        console.log(data);
+        // console.log(data);
     });
+
+    // TODO: this response should not be sent unless insert was successful
+    response.json("???");
 });
 
 
