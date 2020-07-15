@@ -58,3 +58,20 @@ const deleteRecipe = (id) => {
             // TODO: this should indicate to the user that it was deleted
         });
 }
+
+const addNewRecipe = (recipe) => {
+    let url = apiPath;
+    let parameters = {
+        "method": "post"
+        , headers: { "Content-Type": "application/json" }
+        , "body": JSON.stringify(recipe)
+    };
+
+    fetch(url, parameters)
+        .then(result => {
+            return result.json();
+        }).then(result => {
+            console.log(result);
+            // TODO: this should provied confirmation to the user
+        });
+}
