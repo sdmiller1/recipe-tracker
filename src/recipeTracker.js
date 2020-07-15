@@ -102,6 +102,28 @@ app.delete("/api/recipes", (request, response) => {
     });
 });
 
+// Add New Recipe
+app.get("/api/new/", (request, response) => {
+    recipe = {
+        title: "Cookies"
+        , description: "Delicious home baked chocolate chip cookies."
+        , ingredients: [
+            "Flour"
+            , "Eggs"
+            , "Vanilla"
+            , "Chocolate Chips"
+        ]
+        , instructions: "Combine ingredients in bowl. place tablespoon sized dough balls on cookie sheet and bake for 10 min."
+        , image: "pizza.jpg"
+    }
+
+    database.addNewRecipe(recipe, data => {
+        // response.json(data);
+        console.log(data);
+    });
+});
+
+
 app.listen(3000, () => {
     console.log("listening on port 3000");
 });
