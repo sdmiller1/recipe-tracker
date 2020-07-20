@@ -111,6 +111,17 @@ class DatabaseManager {
         }
 
     }
+
+    updateRecipeRating(id, rating, callback) {
+        let connection = this.getConnection();
+
+        let sql = "update recipes set rating = ? where id = ?";
+
+        connection.query(sql, [rating, id], (err, result, fields) => {
+            if (err) throw err;
+            callback(result);
+        });
+    }
 }
 
 module.exports = DatabaseManager;

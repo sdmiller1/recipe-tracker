@@ -3,7 +3,7 @@ const fs = require("fs");
 const bodyParser = require("body-parser");
 const DatabaseManager = require("./DatabaseManager.js");
 // TODO: i dont think this line is needed/ i didnt add it
-const { response } = require("express");
+const { response, request } = require("express");
 
 const database = new DatabaseManager();
 
@@ -115,6 +115,15 @@ app.post("/api/recipes/", (request, response) => {
     // TODO: this response should not be sent unless insert was successful
     response.json("???");
 });
+
+app.post("/api/recipes/rate/", (request, response) => {
+    let id = request.body.id;
+    let rating = request.body.rating;
+
+    database.updateRecipeRating(id, rating, data => {
+        response.json(data);
+    });
+})
 
 
 app.listen(3000, () => {

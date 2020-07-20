@@ -67,7 +67,7 @@ const rateRecipe = (ratingButton) => {
 
     setRecipeRating(rating);
 
-    // submitRating(recipeId, rating);
+    submitRecipeRating(recipeId, rating);
 }
 
 const setRecipeRating = (rating) => {
