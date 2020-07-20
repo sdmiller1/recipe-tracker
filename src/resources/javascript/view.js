@@ -28,12 +28,12 @@ const displayRecipe = () => {
                 <div class="col-lg-6 col-md-6 col-6">
                     <h2>${recipe.name}</h2>
                     <!-- TODO: finish implementing the rating js -->
-                    <div class="rating mt-2">
-                        <i class="fa fa-star-o" onclick="rateMovie(this)" data-rating="1"></i>
-                        <i class="fa fa-star-o" onclick="rateMovie(this)" data-rating="2"></i>
-                        <i class="fa fa-star-o" onclick="rateMovie(this)" data-rating="3"></i>
-                        <i class="fa fa-star-o" onclick="rateMovie(this)" data-rating="4"></i>
-                        <i class="fa fa-star-o" onclick="rateMovie(this)" data-rating="5"></i>
+                    <div class="rating mt-2" data-recipe="${recipe.id}">
+                        <i class="fa fa-star-o" onclick="rateRecipe(this)" data-rating="1"></i>
+                        <i class="fa fa-star-o" onclick="rateRecipe(this)" data-rating="2"></i>
+                        <i class="fa fa-star-o" onclick="rateRecipe(this)" data-rating="3"></i>
+                        <i class="fa fa-star-o" onclick="rateRecipe(this)" data-rating="4"></i>
+                        <i class="fa fa-star-o" onclick="rateRecipe(this)" data-rating="5"></i>
                     </div>
                     <p class="">
                         ${recipe.description}
@@ -59,6 +59,29 @@ const displayRecipe = () => {
     });
 
 
+}
+
+const rateRecipe = (ratingButton) => {
+    let rating = ratingButton.dataset.rating;
+    let recipeId = ratingButton.parentNode.dataset.recipe;
+
+    setRecipeRating(rating);
+
+    // submitRating(recipeId, rating);
+}
+
+const setRecipeRating = (rating) => {
+    if (rating > 0) {
+        let stars = Array.from(document.querySelectorAll(".rating i"));
+        let fullStars = stars.filter(x => x.dataset.rating <= rating);
+        let emptyStars = stars.filter(x => x.dataset.rating > rating)
+
+        fullStars.map(x => x.classList = "fa fa-star text-warning");
+        emptyStars.map(x => x.classList = "fa fa-star-o text-secondary");
+    } else {
+        let stars = Array.from(document.querySelectorAll(".rating i"));
+        stars.map(x => x.classList = "fa fa-star-o");
+    }
 }
 
 window.onload = displayRecipe;
