@@ -56,6 +56,8 @@ const displayRecipe = () => {
         `;
 
         outputLocation.innerHTML = recipeSection;
+        
+        setRecipeRating(recipe.rating);
     });
 
 
