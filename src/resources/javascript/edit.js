@@ -52,7 +52,7 @@ const displayRecipe = () => {
                     <textarea class="form-control" id="recipeInstructions" rows="3">${recipe.instructions}</textarea>
                 </div>
                 <div class="col-12">
-                    <button class="btn btn-primary">Save Recipe</button>
+                    <button class="btn btn-primary" onclick="updateRecipe(${recipe.id})">Save Recipe</button>
                     <button class="btn btn-danger" onclick="deleteRecipe(${recipe.id})">Delete Recipe</button>
                 </div>
             </section>
@@ -62,6 +62,22 @@ const displayRecipe = () => {
     });
 
 
+}
+
+const updateRecipe = (id) => {
+    let recipe = {};
+
+    recipe["id"] = id;
+    recipe["title"] = document.querySelector("#recipeTitle").value;
+    recipe["description"] = document.querySelector("#recipeDescription").value;
+    recipe["instructions"] = document.querySelector("#recipeInstructions").value;
+    recipe["ingredients"] = [];
+
+    let ingredients = document.querySelectorAll(".recipeIngredient");
+    ingredients.forEach(node => {recipe["ingredients"].push(node.value)})
+
+    console.log(recipe);
+    editRecipe(recipe);
 }
 
 const addIngredient = () => {

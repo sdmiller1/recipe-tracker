@@ -76,6 +76,23 @@ const addNewRecipe = (recipe) => {
         });
 }
 
+const editRecipe = (recipe) => {
+    let url = apiPath + "/edit/";
+    let parameters = {
+        "method": "post"
+        , headers: { "Content-Type": "application/json" }
+        , "body": JSON.stringify(recipe)
+    };
+
+    fetch(url, parameters)
+        .then(result => {
+            return result.json();
+        }).then(result => {
+            console.log(result);
+            // TODO: this should provied confirmation to the user
+        });
+}
+
 const submitRecipeRating = (recipeId, rating) => {
     let url = apiPath + "/rate/";
     let parameters = {
