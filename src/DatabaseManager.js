@@ -117,6 +117,17 @@ class DatabaseManager {
         let description = recipe.description;
         let instructions = recipe.instructions;
 
+        let ingredients = recipe.ingredients;
+
+        this.getIngredientsByRecipeId(id, data => {
+            let existingIngredients = []
+            data.map(x => {existingIngredients.push(x["ingredient"])});
+
+            ingredients = ingredients.filter(x => !existingIngredients.includes(x));
+
+            this.addNewRecipeIngredients(id, ingredients, data => {});
+        });
+
         let connection = this.getConnection();
 
         let sql = "update recipes set name = ?, description = ?, instructions = ? where id = ?";
