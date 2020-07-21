@@ -123,7 +123,21 @@ app.post("/api/recipes/rate/", (request, response) => {
     database.updateRecipeRating(id, rating, data => {
         response.json(data);
     });
-})
+});
+
+app.post("/api/recipes/edit/", (request, response) => {
+    let id = request.body.id;
+    let recipe = {
+            title: request.body.title
+            , description: request.body.description
+            , ingredients: request.body.ingredients
+            , instructions: request.body.instructions
+        }
+
+    database.updateRecipe(id, recipe, data => {
+        response.json(data);
+    });
+});
 
 
 app.listen(3000, () => {

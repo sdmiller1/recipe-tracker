@@ -112,6 +112,21 @@ class DatabaseManager {
 
     }
 
+    updateRecipe(id, recipe, callback) {
+        let title = recipe.title;
+        let description = recipe.description;
+        let instructions = recipe.instructions;
+
+        let connection = this.getConnection();
+
+        let sql = "update recipes set name = ?, description = ?, instructions = ? where id = ?";
+
+        connection.query(sql, [title, description, instructions, id], (err, result, fields) => {
+            if (err) throw err;
+            callback(result);
+        });
+    }
+
     updateRecipeRating(id, rating, callback) {
         let connection = this.getConnection();
 
