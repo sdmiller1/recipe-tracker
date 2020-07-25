@@ -150,7 +150,11 @@ app.post("/api/recipes/edit/", (request, response) => {
         }
 
     database.updateRecipe(id, recipe, data => {
-        response.json(data);
+        if (data["affectedRows"] == 1) {
+            response.json({recipeID: id, status: "Success"});
+        } else {
+            response.json({recipeID: id, status: "Error"});
+        }
     });
 });
 
