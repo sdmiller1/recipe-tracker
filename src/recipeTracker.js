@@ -108,8 +108,13 @@ app.delete("/api/recipes", (request, response) => {
 
 // Add New Recipe
 app.post("/api/recipes/", (request, response) => {
-    // TODO: Verify that datashape is correct before insert
-    let recipe = request.body;
+    let recipe = {
+        title: request.body.title
+        , description: request.body.description
+        , ingredients: request.body.ingredients
+        , instructions: request.body.instructions
+        // , image: request.body.image
+    };
 
     database.addNewRecipe(recipe, data => {
         if (data["affectedRows"] == 1) {

@@ -75,20 +75,6 @@ class DatabaseManager {
     addNewRecipe(recipe, callback) {
         let connection = this.getConnection();
 
-        // Data shape for incoming recipes
-        // recipe = {
-        //     title: "Cookies"
-        //     , description: "Delicious home baked chocolate chip cookies."
-        //     , ingredients: [
-        //         "Flour"
-        //         , "Eggs"
-        //         , "Vanilla"
-        //         , "Chocolate Chips"
-        //     ]
-        //     , instructions: "Combine ingredients in bowl. place tablespoon sized dough balls on cookie sheet and bake for 10 min."
-        //     , image: "pizza.jpg"
-        // }
-
         let sql = "insert into recipes values (default, ?, ?, ?, 0, ?)";
 
         connection.query(sql, [recipe.title, recipe.description, recipe.instructions, recipe.image], (err, result, fields) => {
