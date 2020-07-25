@@ -99,9 +99,9 @@ app.delete("/api/recipes", (request, response) => {
 
     database.deleteRecipeById(id, data => {
         if (data["affectedRows"] == 1) {
-            response.json("Success");
+            response.json({recipeID: id, status: "Success"});
         } else {
-            response.json("Error");
+            response.json({recipeID: id, status: "Error"});
         }
     });
 });
@@ -113,14 +113,16 @@ app.post("/api/recipes/", (request, response) => {
         , description: request.body.description
         , ingredients: request.body.ingredients
         , instructions: request.body.instructions
-        // , image: request.body.image
+        , image: request.body.image
     };
 
     database.addNewRecipe(recipe, data => {
+        let id = data["insertId"];
+
         if (data["affectedRows"] == 1) {
-            response.json("Success");
+            response.json({recipeID: id, status: "Success"});
         } else {
-            response.json("Error");
+            response.json({recipeID: id, status: "Error"});
         }
     });
 });
@@ -132,9 +134,9 @@ app.post("/api/recipes/rate/", (request, response) => {
 
     database.updateRecipeRating(id, rating, data => {
         if (data["affectedRows"] == 1) {
-            response.json("Success");
+            response.json({recipeID: id, status: "Success"});
         } else {
-            response.json("Error");
+            response.json({recipeID: id, status: "Error"});
         }
     });
 });

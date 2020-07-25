@@ -54,7 +54,7 @@ const deleteRecipe = (id) => {
         .then(result => {
             return result.json();
         }).then(result => {
-            if (result == "Success") {
+            if (result["status"] == "Success") {
                 window.location = "/";
             }
         });
@@ -72,8 +72,8 @@ const addNewRecipe = (recipe) => {
         .then(result => {
             return result.json();
         }).then(result => {
-            if (result == "Success") {
-                window.location = "/";
+            if (result["status"] == "Success") {
+                window.location = "/view/" + result["recipeID"];
             }
         });
 }
