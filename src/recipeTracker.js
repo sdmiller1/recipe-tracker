@@ -3,7 +3,7 @@ const fs = require("fs");
 const bodyParser = require("body-parser");
 const DatabaseManager = require("./DatabaseManager.js");
 // TODO: i dont think this line is needed/ i didnt add it
-const { response, request } = require("express");
+// const { response, request } = require("express");
 
 const database = new DatabaseManager();
 
@@ -125,15 +125,21 @@ app.post("/api/recipes/", (request, response) => {
     });
 });
 
+// Rate Recipes
 app.post("/api/recipes/rate/", (request, response) => {
     let id = request.body.id;
     let rating = request.body.rating;
 
     database.updateRecipeRating(id, rating, data => {
-        response.json(data);
+        if (data["affectedRows"] == 1) {
+            response.json("Success");
+        } else {
+            response.json("Error");
+        }
     });
 });
 
+// Edit Recipes
 app.post("/api/recipes/edit/", (request, response) => {
     let id = request.body.id;
     let recipe = {
