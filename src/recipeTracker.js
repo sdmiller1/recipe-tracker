@@ -101,7 +101,7 @@ app.delete("/api/recipes", (request, response) => {
         if (data["affectedRows"] == 1) {
             response.json("Success");
         } else {
-            response.json("An error occured");
+            response.json("Error");
         }
     });
 });
@@ -112,12 +112,12 @@ app.post("/api/recipes/", (request, response) => {
     let recipe = request.body;
 
     database.addNewRecipe(recipe, data => {
-        // response.json(data);
-        // console.log(data);
+        if (data["affectedRows"] == 1) {
+            response.json("Success");
+        } else {
+            response.json("Error");
+        }
     });
-
-    // TODO: this response should not be sent unless insert was successful
-    response.json("Success");
 });
 
 app.post("/api/recipes/rate/", (request, response) => {

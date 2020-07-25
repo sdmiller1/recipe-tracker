@@ -93,8 +93,9 @@ class DatabaseManager {
 
         connection.query(sql, [recipe.title, recipe.description, recipe.instructions, recipe.image], (err, result, fields) => {
             if (err) throw err;
+            callback(result);
 
-            this.addNewRecipeIngredients(result.insertId, recipe.ingredients, callback);
+            this.addNewRecipeIngredients(result.insertId, recipe.ingredients, data => {});
         });
     }
 
