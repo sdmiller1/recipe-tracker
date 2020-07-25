@@ -54,8 +54,9 @@ const deleteRecipe = (id) => {
         .then(result => {
             return result.json();
         }).then(result => {
-            console.log(result);
-            // TODO: this should indicate to the user that it was deleted
+            if (result == "Success") {
+                window.location = "/";
+            }
         });
 }
 
@@ -71,8 +72,9 @@ const addNewRecipe = (recipe) => {
         .then(result => {
             return result.json();
         }).then(result => {
-            console.log(result);
-            // TODO: this should provied confirmation to the user
+            if (result == "Success") {
+                window.location = "/";
+            }
         });
 }
 

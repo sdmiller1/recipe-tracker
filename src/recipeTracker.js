@@ -98,7 +98,11 @@ app.delete("/api/recipes", (request, response) => {
     let id = request.body.id;
 
     database.deleteRecipeById(id, data => {
-        response.json(data);
+        if (data["affectedRows"] == 1) {
+            response.json("Success");
+        } else {
+            response.json("An error occured");
+        }
     });
 });
 
@@ -113,7 +117,7 @@ app.post("/api/recipes/", (request, response) => {
     });
 
     // TODO: this response should not be sent unless insert was successful
-    response.json("???");
+    response.json("Success");
 });
 
 app.post("/api/recipes/rate/", (request, response) => {
