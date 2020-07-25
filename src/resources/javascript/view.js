@@ -27,7 +27,6 @@ const displayRecipe = () => {
                 </div>
                 <div class="col-lg-6 col-md-6 col-6">
                     <h2>${recipe.name}</h2>
-                    <!-- TODO: finish implementing the rating js -->
                     <div class="rating mt-2" data-recipe="${recipe.id}">
                         <i class="fa fa-star-o" onclick="rateRecipe(this)" data-rating="1"></i>
                         <i class="fa fa-star-o" onclick="rateRecipe(this)" data-rating="2"></i>
