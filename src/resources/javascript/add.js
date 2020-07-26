@@ -20,9 +20,13 @@ const submitNewRecipe = () => {
 const addIngredient = () => {
     let ingredientsContainer = document.querySelector("#ingredientsContainer");
 
-    ingredientsContainer.innerHTML += `
-        <div class="col-4 text-center mb-1">
-            <input type="text" class="form-control recipeIngredient">
-        </div>
-    `;
+    let ingredientElement = document.createElement("div");
+    let ingredientInput = document.createElement("input");
+
+    ingredientElement.classList = "col-4 text-center mb-1";
+    ingredientInput.classList = "form-control recipeIngredient";
+    ingredientInput.type = "text";
+
+    ingredientElement.appendChild(ingredientInput);
+    ingredientsContainer.appendChild(ingredientElement);
 }
