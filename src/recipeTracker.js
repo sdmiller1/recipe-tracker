@@ -147,7 +147,7 @@ app.post("/api/recipes/edit/", (request, response) => {
     let recipe = {
             title: request.body.title
             , description: request.body.description
-            , ingredients: request.body.ingredients
+            , ingredients: request.body.ingredients.filter(x => x !== '')
             , instructions: request.body.instructions
         }
 
