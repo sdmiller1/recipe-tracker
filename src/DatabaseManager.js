@@ -99,6 +99,17 @@ class DatabaseManager {
 
     }
 
+    deleteRecipeIngredients(recipeId, callback) {
+        let connection = this.getConnection();
+
+        let sql = "delete from ingredients where recipes_id = ?";
+
+        connection.query(sql, [recipeId], (err, result, fields) => {
+            if (err) throw err;
+            callback(result);
+        });
+    }
+
     updateRecipe(id, recipe, callback) {
         let title = recipe.title;
         let description = recipe.description;
@@ -106,12 +117,7 @@ class DatabaseManager {
 
         let ingredients = recipe.ingredients;
 
-        this.getIngredientsByRecipeId(id, data => {
-            let existingIngredients = []
-            data.map(x => {existingIngredients.push(x["ingredient"])});
-
-            ingredients = ingredients.filter(x => !existingIngredients.includes(x));
-
+        this.deleteRecipeIngredients(id, data => {
             this.addNewRecipeIngredients(id, ingredients, data => {});
         });
 
