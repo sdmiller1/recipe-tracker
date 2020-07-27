@@ -64,7 +64,6 @@ const addNewRecipe = (recipeFormData) => {
     let url = apiPath;
     let parameters = {
         "method": "post"
-        // , headers: { "Content-Type": "application/json" }
         , "body": recipeFormData
     };
 

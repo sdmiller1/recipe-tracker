@@ -2,9 +2,7 @@
 
 const submitNewRecipe = () => {
     let recipe = {};
-    let starterForm = document.createElement("form");
-    starterForm.enctype = "multipart/form-data";
-    let formData = new FormData(starterForm);
+    let formData = new FormData();
 
     recipe["title"] = document.querySelector("#recipeTitle").value;
     recipe["description"] = document.querySelector("#recipeDescription").value;
