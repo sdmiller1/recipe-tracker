@@ -100,6 +100,17 @@ app.get("/api/recipes/search/:search", (request, response) => {
 app.delete("/api/recipes", (request, response) => {
     let id = request.body.id;
 
+    database.getRecipeById(id, data => {
+        let image = data["image"];
+        let path = "resources/images/" + image;
+
+        fs.unlink(path, (err) => {
+            if (err) {
+              console.error(err);
+            }
+        });
+    });
+
     database.deleteRecipeById(id, data => {
         if (data["affectedRows"] == 1) {
             response.json({recipeID: id, status: "Success"});
