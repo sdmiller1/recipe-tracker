@@ -17,3 +17,29 @@
 .form-check-label, .form-check-input {
     cursor: pointer;
 }
+
+.img-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.img-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.img-overlay:before {
+    content: ' ';
+    display: block;
+    height: 33%;
+}
+
+.img-overlay input {
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.658);
+    border-radius: 5px;
+}
