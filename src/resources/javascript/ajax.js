@@ -60,12 +60,12 @@ const deleteRecipe = (id) => {
         });
 }
 
-const addNewRecipe = (recipe) => {
+const addNewRecipe = (recipeFormData) => {
     let url = apiPath;
     let parameters = {
         "method": "post"
-        , headers: { "Content-Type": "application/json" }
-        , "body": JSON.stringify(recipe)
+        // , headers: { "Content-Type": "application/json" }
+        , "body": recipeFormData
     };
 
     fetch(url, parameters)

@@ -2,19 +2,25 @@
 
 const submitNewRecipe = () => {
     let recipe = {};
+    let formData = new FormData();
 
     recipe["title"] = document.querySelector("#recipeTitle").value;
     recipe["description"] = document.querySelector("#recipeDescription").value;
     recipe["instructions"] = document.querySelector("#recipeInstructions").value;
-    recipe["image"] = "pizza.jpg";
+    recipe["image"] = document.querySelector("#recipeImage").files[0];
     recipe["ingredients"] = [];
 
     let ingredients = document.querySelectorAll(".recipeIngredient");
     ingredients.forEach(node => {recipe["ingredients"].push(node.value)})
 
+    formData.append('title', recipe["title"]);
+    formData.append('description', recipe["description"]);
+    formData.append('instructions', recipe["instructions"]);
+    formData.append('ingredients', recipe["ingredients"]);
+    formData.append('image', recipe["image"]);
 
     console.log(recipe);
-    addNewRecipe(recipe);
+    addNewRecipe(formData);
 }
 
 const addIngredient = () => {
