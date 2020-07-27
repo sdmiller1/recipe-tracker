@@ -1,6 +1,9 @@
 const express = require("express");
 const fs = require("fs");
 const bodyParser = require("body-parser");
+// Multer setup
+const multer  = require("multer");
+const upload = multer({ dest: 'resources/images/' });
 const DatabaseManager = require("./DatabaseManager.js");
 // TODO: i dont think this line is needed/ i didnt add it
 // const { response, request } = require("express");
@@ -107,13 +110,13 @@ app.delete("/api/recipes", (request, response) => {
 });
 
 // Add New Recipe
-app.post("/api/recipes/", (request, response) => {
+app.post("/api/recipes/", upload.single('image'), (request, response) => {
     let recipe = {
         title: request.body.title
         , description: request.body.description
-        , ingredients: request.body.ingredients
+        , ingredients: request.body.ingredients.split(",")
         , instructions: request.body.instructions
-        , image: request.body.image
+        , image: request.file.filename
     };
 
     database.addNewRecipe(recipe, data => {
