@@ -19,7 +19,6 @@ const submitNewRecipe = () => {
     formData.append('ingredients', recipe["ingredients"]);
     formData.append('image', recipe["image"]);
 
-    console.log(recipe);
     addNewRecipe(formData);
 }
 

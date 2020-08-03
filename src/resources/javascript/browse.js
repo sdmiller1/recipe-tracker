@@ -5,10 +5,8 @@ const displayRecipes = () => {
     let outputLocation = document.querySelector("#recipeDisplayLocation");
 
     getAllRecipes(recipes => {
-        console.log(recipes)
     
         for (recipe of recipes) {
-            console.log(recipe);
             let recipeItem = `
                     <div class="col-6 col-lg-3 my-2">
                         <div class="card h-100">

@@ -76,7 +76,6 @@ const updateRecipe = (id) => {
     let ingredients = document.querySelectorAll(".recipeIngredient");
     ingredients.forEach(node => {recipe["ingredients"].push(node.value)})
 
-    console.log(recipe);
     editRecipe(recipe);
 }
 
