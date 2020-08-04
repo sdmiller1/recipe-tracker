@@ -4,7 +4,6 @@ const displayRecipe = () => {
 
     let outputLocation = document.querySelector("#recipeContatiner");
 
-    // TODO: this is currently really fragile
     let recipeId = parseInt(window.location.toString().split("/")[4]);
 
     getRecipeById(recipeId, recipe => {
