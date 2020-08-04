@@ -107,7 +107,6 @@ const submitRecipeRating = (recipeId, rating) => {
         .then(result => {
             return result.json();
         }).then(result => {
-            console.log(result);
-            // TODO: this should provied confirmation to the user
+            
         });
 }
