@@ -5,8 +5,6 @@ const bodyParser = require("body-parser");
 const multer  = require("multer");
 const upload = multer({ dest: 'resources/images/' });
 const DatabaseManager = require("./DatabaseManager.js");
-// TODO: i dont think this line is needed/ i didnt add it
-// const { response, request } = require("express");
 
 const database = new DatabaseManager();
 
